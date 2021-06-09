@@ -1,15 +1,14 @@
 {% extends 'base.php' %}
 
 {% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css')}}">
 <title>Mastermind</title>
 {% endblock %}
 {% block body %}
-<div id="GameWindow">
-    <div id="Controls">
-        <button type="click" id="StartButton">TestKnop</button>
-    </div>
-    <div id="GameBoard">
-
-    </div>
-</div>
+<main>
+    <form action="/" method="POST">
+        <input type="submit" value="Start New Game">
+        <input type="hidden" value="StartGame" name="Msg">
+    </form>
+</main>
 {% endblock %}

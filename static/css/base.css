@@ -1,20 +1,32 @@
+body{
+    margin: 0px;
+}
+
 header{
     position: relative;
-    height: 160px;
+    height: 80px;
     margin-top: 0px;
+    background-color: gray;
+}
+
+main{
+    position: absolute;
+    width: 100%;
+    top: 80px;
+    bottom: 60px;
 }
 
 .container{
     position: relative;
-    height: 160px;
 }
 
 #title{
     position: absolute;
-    top: 60px;
-    margin: 0px;
+    margin-block-start: 20px;
+    margin-block-end: 20px;
     font-size: 40px;
-    text-indent: 100px;
+    left: 50%;
+    transform: translateX(-50%);
     font-family: 'Courier New';
 }
 
@@ -24,4 +36,19 @@ header{
     transform: translateY(-50%);
     width: 12em;
     height: 4em;
+}
+
+#controls{
+    position: relative;
+
+}
+
+footer{
+    position: absolute;
+    display: block;
+    bottom: 0px;
+    height: 60px;
+    width: 100%;
+    background-color: gray;
+    text-align: center;
 }
