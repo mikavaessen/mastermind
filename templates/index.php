@@ -4,5 +4,12 @@
 <title>Mastermind</title>
 {% endblock %}
 {% block body %}
-<h1>Hallo</h1>
+<div id="GameWindow">
+    <div id="Controls">
+        <button type="click" id="StartButton">TestKnop</button>
+    </div>
+    <div id="GameBoard">
+
+    </div>
+</div>
 {% endblock %}

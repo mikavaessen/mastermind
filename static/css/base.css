@@ -1,0 +1,27 @@
+header{
+    position: relative;
+    height: 160px;
+    margin-top: 0px;
+}
+
+.container{
+    position: relative;
+    height: 160px;
+}
+
+#title{
+    position: absolute;
+    top: 60px;
+    margin: 0px;
+    font-size: 40px;
+    text-indent: 100px;
+    font-family: 'Courier New';
+}
+
+#HeaderLogo{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12em;
+    height: 4em;
+}
