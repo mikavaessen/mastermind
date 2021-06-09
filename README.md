@@ -1,0 +1,2 @@
+# mastermind
+Python project mastermind
