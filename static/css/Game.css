@@ -1,0 +1,10 @@
+#Board{
+    position: absolute;
+    /*TBD size*/
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-style: solid;
+    border-radius: 3px;
+    background-color: lightgray;
+}
