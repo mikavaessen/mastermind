@@ -1,0 +1,58 @@
+#UserSelect{
+    position: absolute;
+    left: 0px;
+    height: 100%;
+    width: 50%;
+}
+
+#users{
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    height: 20px;
+    width: fit-content;
+}
+
+#NewNameField{
+    position: absolute;
+    left: 50%;
+    bottom: 30%;
+    transform: translate(-50%, -5px);
+}
+
+#AddNick{
+    position: absolute;
+    left: 50%;
+    bottom: 30%;
+    transform: translate(-50%, 15px)
+}
+
+#Difficulty{
+    position: absolute;    
+    right: 0px;
+    height: 100%;
+    width: 50%;
+}
+
+#hardmode{
+    position: absolute;
+}
+
+#colours{
+    position: absolute;
+}
+
+#tries{
+    position: absolute;
+}
+
+div{
+    position: absolute;
+    width: 40%;
+    top: 30%;
+    bottom: 30%;
+    height: 40%;
+    left: 30%;
+    border-style: solid;
+}
