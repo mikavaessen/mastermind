@@ -12,7 +12,5 @@ def index():
         return render_template('Game.php')
     return render_template('index.php')
 
-    
-
 if __name__ == '__main__':
     app.run(debug=True)

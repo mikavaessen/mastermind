@@ -1,3 +1,15 @@
+main{
+    position: relative;
+}
+
+#StartForm{
+    position: inherit;
+    top: inherit;
+    bottom: inherit;
+    width: inherit;
+}
+
+
 #StartButton{
     position: absolute;
     left: 0px;

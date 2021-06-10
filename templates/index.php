@@ -6,8 +6,8 @@
 {% endblock %}
 {% block body %}
 <main>
-    <form action="/" method="POST">
-        <input type="submit" value="Start New Game">
+    <form action="/" method="POST" id="StartForm">
+        <input type="submit" value="Start New Game" id="StartButton">
         <input type="hidden" value="StartGame" name="Msg">
     </form>
 </main>
