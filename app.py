@@ -9,7 +9,6 @@ app = Flask(__name__)
 def index():
     if request.method == 'POST':
         if request.form['submit'] == 'Start New Game':
-            #check for checkbox hard mode
             return render_template('Login.php')
         elif request.form['submit'] == 'Statistics':
             return render_template('Statistics.php')
