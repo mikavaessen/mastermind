@@ -11,6 +11,7 @@ def index():
     if request.method == 'POST' and request.form['Msg'] == 'StartGame':
         return render_template('Game.php')
     return render_template('index.php')
+
     
 
 if __name__ == '__main__':
