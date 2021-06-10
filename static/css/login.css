@@ -35,19 +35,51 @@
     width: 50%;
 }
 
-#hardmode{
+#HmDiv{
     position: absolute;
+    left: 50%;
+    top: 12.5%;
+    width: 120px;
+    height: 25%;
+    transform: translateX(-50%);
 }
 
-#colours{
+#ClDiv{
     position: absolute;
+    left: 50%;
+    top: 37.5%;
+    width: 120px;
+    height: 25%;
+    transform: translate(-50%, 10px);
 }
 
-#tries{
+#TryDiv{
     position: absolute;
+    left: 50%;
+    top: 62.5%;
+    width: 120px;
+    height: 25%;
+    transform: translateX(-50%);
 }
 
-div{
+.item{
+    position: absolute;
+    margin-left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 31px;
+    height: 12px;
+}
+
+label{
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    transform: translateY(-47%);
+    text-align: center;
+}
+
+.FormDiv{
     position: absolute;
     width: 40%;
     top: 30%;
@@ -55,4 +87,22 @@ div{
     height: 40%;
     left: 30%;
     border-style: solid;
+}
+
+#StartGame{
+    position: absolute;
+    left: 0px;
+    bottom: 10%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    height: 80px;
+    width: 160px;
+}
+
+h2{
+    text-align: center;
+    top: 30%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }

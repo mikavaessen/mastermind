@@ -6,6 +6,7 @@
 {% endblock %}
 {% block body %}
 <main>
+    <h3><u>Game window</u></h3>
         <!--
             Veld van 4x10 met per rij 4 plekken voor feedback pins
         -->

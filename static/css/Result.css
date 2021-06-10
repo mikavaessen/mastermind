@@ -1,0 +1,33 @@
+.CelText{
+    position: absolute;
+    font-size: 32px;
+    text-align: center;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bolder;
+    margin: 0px;
+}
+ 
+span{
+    position: absolute;
+    height: 500px;
+    width: 500px;
+    background-color:lightgray;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 5px;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#ReturnButton{
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    height: 60px;
+    width: 250px;
+    font-size: 20px;
+    transform: translateX(-50%);
+}

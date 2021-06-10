@@ -6,26 +6,38 @@
 {% endblock %}
 {% block body %}
 <main>
-    <form action="/login" method="POST" id="UserSelect">
-        <div>
+    <h3><U>Game Settings</U></h3>
+    <form action="/" method="POST" id="UserSelect">
+        <h2>Nickname</h2>
+        <div class="FormDiv">
             <select name="user", id="users">
-            <option value="||">Select Nickname</option>
-            <option value="Mika">Mika</option>
-            <option value="Leon">Leon</option>
+                {% for name in names %}
+                <option value="{{name}}">{{name}}</option>
+                {% endfor %}
             </select>
             <input type="text" placeholder="New Nickname" id="NewNameField" name="NewNameField">
             <input type="submit" name="Add Nickname" id="AddNick" value="Add">
+            <input type="hidden" name="Msg" value="AddName">
         </div>
     </form>
-    <form action="/login.py" method="POST" id="Difficulty">
-        <div>
-            <input type="checkbox" id="hardmode" name="hardmode">
-            <label for="hardmode">Hard Mode</label>
-            <input type="range" id="colours" name="colours" min="6" max="10">
-            <label for="colours">Amount of colours (6-10)</label>
-            <input type="range" id="tries" name="tries" min="4" max="10">
-            <label for="tries">Amount of tries (4-10)</label>
+    <form action="/" method="POST" id="Difficulty">
+        <h2>Difficulty</h2>
+        <div class="FormDiv">
+            <div id="HmDiv">
+                <input type="checkbox" class="item" name="hardmode">
+                <label for="hardmode">Hard Mode</label>
+            </div>
+            <div id="ClDiv">
+                <input type="number" class="item" name="colours" step="1" min="6" max="10" value="6">
+                <label for="colours">Colours<br>(6-10)</label>
+            </div>
+            <div id="TryDiv">
+                <input type="number" class="item" name="'tries" step="1" min="4" max="10" value="4">
+                <label for="tries">Tries<br>(4-10)</label>
+            </div>
         </div>
+        <input type="submit" name="Start" value="Start Game" id="StartGame">
+        <input type="hidden" name="Msg" value="StartGame">
     </form>
 </main>
 {% endblock %}

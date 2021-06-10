@@ -1,5 +1,6 @@
 body{
     margin: 0px;
+    font-family: 'Courier New';
 }
 
 header{
@@ -27,7 +28,6 @@ main{
     font-size: 40px;
     left: 50%;
     transform: translateX(-50%);
-    font-family: 'Courier New';
 }
 
 #HeaderLogo{
@@ -51,4 +51,12 @@ footer{
     width: 100%;
     background-color: gray;
     text-align: center;
+}
+
+h3{
+    position: absolute;
+    left: 50%;
+    top: 2.5%;
+    transform: translateX(-50%);
+    font-size: 28px;
 }
