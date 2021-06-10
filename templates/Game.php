@@ -2,6 +2,7 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/Game.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/colrow.css')}}">
 <title>MM | Home</title>
 {% endblock %}
 {% block body %}
@@ -9,44 +10,68 @@
     <h3><u>Game window</u></h3>
     <div id="gameWindow">
         <div id="Board">
-            {% if inserts == NULL %}
-            <div id="col0">
-                {% for in range(0, tries) %}
-                <span class="empty" id="row{{i}}"></span>
+            {% if inserts == 'no' %}
+            <div id="col0" class="col">
+                {% for i in range(0, tries) %}
+                <span class="empty row" id="row{{i}}"></span>
                 {% endfor %}
             </div>
-            <div id="col1">
-                {% for in range(0, tries) %}
-                <span class="empty" id="row{{i}}"></span>
+            <div id="col1" class="col">
+                {% for i in range(0, tries) %}
+                <span class="empty row" id="row{{i}}"></span>
                 {% endfor %}
             </div>
-            <div id="col2">
-                {% for in range(0, tries) %}
-                <span class="empty" id="row{{i}}"></span>
+            <div id="col2" class="col">
+                {% for i in range(0, tries) %}
+                <span class="empty row" id="row{{i}}"></span>
                 {% endfor %}
             </div>
-            <div id="col3">
-                {% for in range(0, tries) %}
-                <span class="empty" id="row{{i}}"></span>
+            <div id="col3" class="col">
+                {% for i in range(0, tries) %}
+                <span class="empty row" id="row{{i}}"></span>
                 {% endfor %}
             </div>
-            <div id="colFb">
-
+            <div id="colFb" class="col">
+                {% for i in range(0, tries) %}
+                    <div class="FbBox" id="FbBox{{i}}">
+                        {% for j in range(0, 4) %}
+                        <span class="empty" id="FbPin{{j}}"></span>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
             </div>
-            {% for i in range(0, tries) %}
-            <span class="empty" id="row{{i}} col0"></span>
-            <span class="empty" id="row{{i}} col1"></span>
-            <span class="empty" id="row{{i}} col2"></span>
-            <span class="empty" id="row{{i}} col3"></span>
+        {% else %}
+        <p>Oops...</p>
+        {% endif %}
         </div>
     </div>
-    <div id="controls">
-
-    </div>
-    {% for i in range(0, tries) %}
-
-        <!--
-            Veld van 4x10 met per rij 4 plekken voor feedback pins
-        -->
+    <form action="/" method="POST" id="controls">
+        <select name="colour0" class="colourSelect">
+            {% for col in colours %}
+            <option value="{{col}}">{{col}}</option>
+            {% endfor %}
+        </select>
+        <select name="colour1" class="colourSelect">
+            {% for col in colours %}
+            <option value="{{col}}">{{col}}</option>
+            {% endfor %}
+        </select>
+        <select name="colour2" class="colourSelect">
+            {% for col in colours %}
+            <option value="{{col}}">{{col}}</option>
+            {% endfor %}
+        </select>
+        <select name="colour3" class="colourSelect">
+            {% for col in colours %}
+            <option value="{{col}}">{{col}}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Make guess" id="GuessButton">
+        <input type="hidden" name="Msg" value="CheckResult">
+    </form>
+    <form action="/" method="POST" id="StopForm">
+        <input type="submit" value="Give up" id="StopButton">
+        <input type="hidden" name="Msg" value="quit">
+    </form>
 </main>
 {% endblock %}

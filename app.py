@@ -8,8 +8,13 @@ names = ['Select nickname']
 app = Flask(__name__)
 Game:GamePlay
 
+
+
+
 @app.route('/', methods=['POST', 'GET'])
 def index():
+    colours = ['green', 'yellow', 'blue', 'red', 'orange'] #need the selected possible colours from the backend 
+    colours.insert(0, 'Select a colour')
     if request.method == 'POST':
         #Go to game settings
         if request.form['Msg'] == 'login':
@@ -27,8 +32,9 @@ def index():
             else:
                 gameMode = 'normal'
             #Game = GamePlay(colourAmount, tryAmount, gameMode)
-
-            return render_template('Game.php', inserts=None, feedback=None)
+            colours = ['green', 'yellow', 'blue', 'red', 'orange'] #need the selected possible colours from the backend 
+            colours.insert(0, 'Select a colour')
+            return render_template('Game.php', inserts=None, feedback=None, tries=tryAmount, colours=colours)
         elif request.form['Msg'] == 'CheckResult':
             # check result and redirect to game page or result
             if result == 'wrong':
@@ -39,7 +45,7 @@ def index():
             return render_template('Login.php', names=names)
         elif request.form['Msg'] == 'return':
             return render_template('index.php')
-    return render_template('Result.php', result=False)
+    return render_template('Game.php', result=False, inserts='no', tries=6, colours=colours)
 
 if __name__ == '__main__':
     app.run(debug=True)
