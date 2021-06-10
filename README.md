@@ -1,6 +1,6 @@
 # mastermind
 Python project mastermind
-Test Leon
+Test
 
 # Required Packages
 flask (pip3 install flask)
