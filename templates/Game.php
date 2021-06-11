@@ -3,7 +3,7 @@
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/Game.css')}}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/colrow.css')}}">
-<title>MM | Home</title>
+<title>MM | Game</title>
 {% endblock %}
 {% block body %}
 <main>
@@ -33,7 +33,7 @@
             </div>
             <div id="colFb" class="col">
                 {% for i in range(0, tries) %}
-                    <div class="FbBox" id="FbBox{{i}}">
+                    <div class="FbBox" id="row{{i}}">
                         {% for j in range(0, 4) %}
                         <span class="empty" id="FbPin{{j}}"></span>
                         {% endfor %}
