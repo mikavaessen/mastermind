@@ -18,7 +18,9 @@ def index():
             return render_template('Login.php', names=names)
         #Show statistics
         elif request.form['Msg'] == 'stats':
-            return render_template('Statistics.php')
+            return render_template('Statistics.php', name='Mika', players=['Mika', 'Leon', 'Gijs'])
+        elif request.form['Msg'] == 'statsFilter':
+            return render_template('Statistics.php', name=request.form['name'],  players=['Mika', 'Leon', 'Gijs'])
         elif request.form['Msg'] == 'StartGame':
             #Start new game after fetching game settings
             colourAmount = request.form['colours']
@@ -46,7 +48,7 @@ def index():
         elif request.form['Msg'] == 'return':
             #Return back to the homepage
             return render_template('index.php')
-    return render_template('Game.php', result=False, inserts='no', tries=10, colours=colours)
+    return render_template('index.php')
 
 if __name__ == '__main__':
     app.run(debug=True)
