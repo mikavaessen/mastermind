@@ -2,7 +2,7 @@ from flask import Flask
 from flask import render_template
 from flask import url_for
 from flask import request
-from backend import GamePlay
+from static.Backend.backend import GamePlay
 
 names = ['Select nickname']
 app = Flask(__name__)

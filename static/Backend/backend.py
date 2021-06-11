@@ -1,6 +1,6 @@
 import random
 import string
-
+from static.Backend.player import Player
 
 
 
@@ -13,6 +13,7 @@ class GamePlay:
         self.positionAmount = positionAmount
         self.gameMode = gameMode
         self.ctr = 0
+        self.players = list(Player)
         if (colourAmount >= 6 and colourAmount <= 10 and positionAmount >= 4 and positionAmount <= 10):
             # genereer random getal in opgegeven range
             s = ""
@@ -88,7 +89,29 @@ class GamePlay:
             if n == self.num:
                 print("You've become a Mastermind!")
                 print("It took you only", self.ctr, "tries.")
+                
+    #Archive required data for a game
+    def archiveGame(self, playerName:str):
+        #Check if player name already exists,
+        #if so archive the game under that player's name
+        for pl in self.players:
+            if playerName == str(pl):
+                player:Player
+                player = pl
+                player.addGame(self.ctr)
+                self.players[self.players.index(playerName)] = player
+                return
+        #If a player with the given name doesn't exist,
+        #Create a new player and archive game
+        self.players.append(Player(playerName))
+        self.players.reverse()
+        self.players[0].addGame(self.ctr)
+        self.players.reverse()
 
+    def getNames(self):
+        names = list(str)
+        for player in self.players:
+            names.append(str(player))
 
 if __name__ == "__main__":
     print('de main werkt')
