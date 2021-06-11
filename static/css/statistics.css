@@ -2,7 +2,7 @@
     position: absolute;
     bottom: 10%;
     left: 0px;
-    height: 83%;
+    height: 90%;
     width: 15%;
     border-top-width: 1px;
     border-bottom-width: 1px;
@@ -38,8 +38,8 @@ h4{
 .PlayerButton{
     width: 100%;
     height: 60px;
-    background-color: chartreuse;
-    border-bottom-color: darkgreen;
+    background-color: lightblue;
+    border-color: darkblue;
     border-width: 1px;
     font-size: 18px;
     font-family: 'Courier New';
@@ -48,8 +48,8 @@ h4{
 .PlayerSelectedButton{
     width: 100%;
     height: 60px;
-    background-color: green;
-    border-bottom-color: darkgreen;
+    background-color: blue;
+    border-color: darkblue;
     color: white;
     border-width: 1px;
     font-size: 18px;
@@ -60,10 +60,11 @@ h4{
     position: absolute;
     bottom: 0%;
     right: 0%;
-    height: 93%;
+    height: 100%;
     width: 84.75%;
     border-style: solid;
     border-width: 1px;
+    overflow: auto;
 }
 
 #PlayerName{
@@ -74,11 +75,40 @@ h4{
 }
 
 .Game{
-    width: 100%;
+    position: relative;
+    width: 90%;
     height: 200px;
     margin-top: 25px;
+    margin-left: 5%;
+    margin-right: 5%;
     border-style: solid;
     border-width: 1px;
+    padding: 10px;
+}
+
+.GameName{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.GameResult{
+    position: absolute;
+    left: 15%;
+    top: 50%;
+    font-size: 18px;
+    text-align: center;
+}
+
+.GameGuesses{
+    position: absolute;
+    right: 15%;
+    top: 50%;
+    font-size: 18px;
+    text-align: center;
 }
 
 #ExitForm{
@@ -96,5 +126,5 @@ h4{
     width: 101%;
     height: 100%;
     font-family: 'Courier New';
+    font-size: 18px;
 }
-

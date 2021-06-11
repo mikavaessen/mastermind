@@ -5,8 +5,8 @@
 <title>MM | Login</title>
 {% endblock %}
 {% block body %}
+<h3><U>Game Settings</U></h3>
 <main>
-    <h3><U>Game Settings</U></h3>
     <form action="/" method="POST" id="UserSelect">
         <h2>Nickname</h2>
         <div class="FormDiv">

@@ -6,8 +6,8 @@
 <title>MM | Game</title>
 {% endblock %}
 {% block body %}
+<h3><u>Game window</u></h3>
 <main>
-    <h3><u>Game window</u></h3>
     <div id="gameWindow">
         <div id="Board">
             {% if inserts == 'no' %}

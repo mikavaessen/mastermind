@@ -9,8 +9,8 @@
 {% endif %}
 {% endblock %}
 {% block body %}
+<h3><u>Result</u></h3>
 <main>
-    <h3><u>Result</u></h3>
     {% if result == TRUE %}
     <span style="border-color: green;"></span>
     <p class="CelText">You won,<br>good job!</p>
