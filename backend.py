@@ -1,7 +1,7 @@
 import random
 from random import choice
 import string
-
+import json
 
 class GamePlay:
 
@@ -16,13 +16,13 @@ class GamePlay:
             s = ""
             if gameMode == "Hard":
                 for x in range(4):
-                    s = s + str(random.randint(0, colourAmount-1))
+                    s = s + str(random.randint(0, colourAmount))
                 print(s)
                 self.num = s
             if gameMode == "Easy":
                 randomNumber = []
                 for x in range(4):
-                    randomNumber.append(choice([i for i in range(0, colourAmount-1) if i not in randomNumber])) # random getal opslaan in array en voorkomen dat deze er dubbel in voorkomt
+                    randomNumber.append(choice([i for i in range(0, colourAmount) if i not in randomNumber])) # random getal opslaan in array en voorkomen dat deze er dubbel in voorkomt
                     s = s + str(randomNumber[x])
                 print(s)
                 self.num = s
@@ -100,13 +100,41 @@ class GamePlay:
                 for i in range(count,count+countCorrectNumber):
                     returnArray[i] = 'Wit'
         return returnArray, self.ctr
-    class gebruiker:
-        def 
+
+
+class user:
+    #https://www.freecodecamp.org/news/python-read-json-file-how-to-load-json-from-a-file-and-parse-dumps/
+    def __init__(self):
+            self.user=0
+
+    def getAllUsers(self):
+        #gets all usernames in database
+        # Opening JSON file
+        with open('User.json', ) as file:
+            data = json.load(file)
+        # returns JSON object as
+        # a dictionary
+        print(data["users"]["user"][1]["name"])
+        # Iterating through the json
+        # list
+
+
+
+
+        #def addUser(self):
+            #add user to database
+        #def getStatisticsUser(self):
+            #gets the statistics of a single user
+        #def setStatisticsUser(self):
+            #sets statistics of a single user after a game
+
 if __name__ == "__main__":
     print('de main werkt')
-    g = GamePlay(6, 4, "Easy")
+    g = GamePlay(6, 4, "Hard")
+    u = user()
+    u.getAllUsers()
     test = ['Empty', 'Empty', 'Empty', 'Empty']
     while (test!=['Zwart', 'Zwart', 'Zwart', 'Zwart']):
         test, aantalPogingen = g.setGuessedColours(str(input("Guess the colour combination:")))
         print(test)
-        print(test2)
+        print(aantalPogingen)
