@@ -32,10 +32,11 @@ class GamePlay:
 
     def setGuessedColours(self, n=0000):
         # input voor testen
-
+        returnArray = ['Empty', 'Empty', 'Empty', 'Empty']
         # Als input gelijk is aan ingegeven waarde
         if (n == self.num):
             print("Great! You guessed the number! You're a Mastermind!")
+            returnArray = ['Zwart', 'Zwart', 'Zwart', 'Zwart']
         else:
             # initializeer counter
 
@@ -57,7 +58,7 @@ class GamePlay:
             correct = []
 
             # for loop draait de lengte
-            for i in range(0, 4):
+            for i in range(0, 3):
                 # checking for equality of digits
                 if (n[i] == self.num[i]):
                     # aantal goed geraden cijfers wordt opgehoogd
@@ -72,8 +73,6 @@ class GamePlay:
                 print("Not quite the number. But you did get ", count, " digit(s) correct!")
                 print("Also these numbers in your input were correct.")
 
-                for k in correct:
-                    print(k, end=' ')
 
                 print('\n')
                 print('\n')
@@ -91,18 +90,20 @@ class GamePlay:
 
             if (count == 0):
                 print("None of the numbers in your input match.")
-        if n == self.num:
-            print("You've become a Mastermind!")
-            print("It took you only", self.ctr, "tries.")
-        returnArray = ['Empty','Empty','Empty','Empty']
-        for i in range(0,count):
-            returnArray[i] = 'Zwart'
-        for i in range(count,count+countCorrectNumber):
-            returnArray[i] = 'Zwart'
-
+            if n == self.num:
+                print("You've become a Mastermind!")
+                print("It took you only", self.ctr, "tries.")
+            if count >0:
+                for i in range(0,count):
+                    returnArray[i] = 'Zwart'
+            if countCorrectNumber > 0:
+                for i in range(count,count+countCorrectNumber):
+                    returnArray[i] = 'Wit'
+        return returnArray
 
 if __name__ == "__main__":
     print('de main werkt')
     g = GamePlay(6, 4, "Easy")
     while (1):
-        g.setGuessedColours(int(input("Guess the colour combination:")))
+        test = g.setGuessedColours(str(input("Guess the colour combination:")))
+        print(test)
