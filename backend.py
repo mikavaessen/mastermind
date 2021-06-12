@@ -30,9 +30,6 @@ class GamePlay:
         else:
             print('foute invoer')
 
-    def generateRandomChar(self):
-        return '1456'
-
     def setGuessedColours(self, n=0000):
         # input voor testen
 
@@ -81,13 +78,27 @@ class GamePlay:
                 print('\n')
                 print('\n')
 
+            guessedArray = [char for char in str(n)]
+            correctArray = [char for char in str(self.num)]
+            countCorrectNumber = 0 #houdt overeenkomende getallen die niet op dezelfde positie staan bij
+            for j in range(0, 4): #telt het aantal overeenkomende getallen
+                for i in correctArray:
+                    if i == guessedArray[j]:
+                        countCorrectNumber += 1
             # wanneer alles fout is geraden
-            elif (count == 0):
-                print("None of the numbers in your input match.")
+            countCorrectNumber = countCorrectNumber-count
+            print(countCorrectNumber)
 
+            if (count == 0):
+                print("None of the numbers in your input match.")
         if n == self.num:
             print("You've become a Mastermind!")
             print("It took you only", self.ctr, "tries.")
+        returnArray = ['Empty','Empty','Empty','Empty']
+        for i in range(0,count):
+            returnArray[i] = 'Zwart'
+        for i in range(count,count+countCorrectNumber):
+            returnArray[i] = 'Zwart'
 
 
 if __name__ == "__main__":
