@@ -1,0 +1,18 @@
+{
+  "users": {
+    "user": [
+      {
+        "name": ":Leon",
+        "Scores": { "score":[ {"pogingen":"0","speeltijd": "2021-04-30 14:00:00.000","Status":"Win"},
+                              {"pogingen":"0","speeltijd": "2021-04-30 14:00:00.000","Status":"Lose"}]
+                  }
+      },
+      {
+        "name": ":Mika",
+        "Scores": { "score":[ {"pogingen":"0","speeltijd": "2021-04-30 14:00:00.000","Status":"Win"},
+                              {"pogingen":"0","speeltijd": "2021-04-30 14:00:00.000","Status":"Lose"}]
+                  }
+      }
+    ]
+  }
+}
