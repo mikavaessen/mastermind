@@ -99,11 +99,14 @@ class GamePlay:
             if countCorrectNumber > 0:
                 for i in range(count,count+countCorrectNumber):
                     returnArray[i] = 'Wit'
-        return returnArray
-
+        return returnArray, self.ctr
+    class gebruiker:
+        def 
 if __name__ == "__main__":
     print('de main werkt')
     g = GamePlay(6, 4, "Easy")
-    while (1):
-        test = g.setGuessedColours(str(input("Guess the colour combination:")))
+    test = ['Empty', 'Empty', 'Empty', 'Empty']
+    while (test!=['Zwart', 'Zwart', 'Zwart', 'Zwart']):
+        test, aantalPogingen = g.setGuessedColours(str(input("Guess the colour combination:")))
         print(test)
+        print(test2)
