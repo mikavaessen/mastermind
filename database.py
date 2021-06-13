@@ -2,8 +2,15 @@ import pyodbc
 from datetime import datetime
 
 class Database():
+<<<<<<< Updated upstream
     def __init__(self):
         self.conStr = 'Driver={SQL Server};\nServer=DESKTOP-3V6BQPT;\nDatabase=Mastermind;\nTrusted_Connection=yes;'
+=======
+    def __init__(self, name:str):
+        self.conStr = 'Driver={SQL Server};\nServer=LAPTOP-9519V91I\MSSQLSERVER01;\nDatabase=Mastermind;\nTrusted_Connection=yes;'
+            
+        #self.conStr = 'Driver={SQL Server};\nServer=DESKTOP-3V6BQPT\MSSQLSERVER01;\nDatabase=Mastermind;\nTrusted_Connection=yes;'
+>>>>>>> Stashed changes
         self.conn = pyodbc.connect(self.conStr)
 
     def getNames(self):
@@ -23,8 +30,7 @@ class Database():
         if self.checkForbidden(name):
             return
         cursor = self.conn.cursor()
-        now = datetime.now().strftime("%c")
-        cursor.execute(f"INSERT INTO data VALUES (NEWID(), {name}, {now}, {tries})")
+        cursor.execute(f"EXEC addGame '{name}', {tries}")
         self.conn.commit()
 
     def checkForbidden(self, string):
