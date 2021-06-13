@@ -15,7 +15,11 @@ class GamePlay:
         self.gameMode = gameMode
         self.ctr = 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         self.allColours['Green', 'Yellow', 'Blue', 'Red', 'Orange','Purple','Pink', 'Brown', 'Silver', 'Aquamarine' ]
+=======
+        self.db = Database()
+>>>>>>> Stashed changes
 =======
         self.db = Database()
 >>>>>>> Stashed changes
