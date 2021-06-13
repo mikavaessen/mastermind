@@ -12,7 +12,7 @@ class Database():
     def getNames(self):
         cursor = self.conn.cursor()
         cursor.execute("SELECT DISTINCT name FROM data")
-        data = list(str)
+        data = list()
         for row in cursor:
             data.append(row[0])
         return data
