@@ -26,8 +26,16 @@
     transform: translateY(50%);
 }
 
-.empty{
+.Empty{
     background-color: darkgray;
+}
+
+.Zwart{
+    background-color: black;
+}
+
+.Wit{
+    background-color: white;
 }
 
 .col{
