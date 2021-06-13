@@ -10,6 +10,7 @@
 <main>
     <div id="gameWindow">
         <div id="Board">
+            {% if inserts == 'no' %}
             <div id="col0" class="col">
                 {% for i in range(0, tries) %}
                 <span class="{{inserts[i][0]}} row" id="row{{i}}"></span>
@@ -39,6 +40,37 @@
                     </div>
                 {% endfor %}
             </div>
+            {% else %}
+            <div id="col0" class="col">
+                {% for i in range(0, tries) %}
+                <span class="{{inserts[i][0]}} row" id="row{{i}}"></span>
+                {% endfor %}
+            </div>
+            <div id="col1" class="col">
+                {% for i in range(0, tries) %}
+                <span class="{{inserts[i][1]}} row" id="row{{i}}"></span>
+                {% endfor %}
+            </div>
+            <div id="col2" class="col">
+                {% for i in range(0, tries) %}
+                <span class="{{inserts[i][2]}} row" id="row{{i}}"></span>
+                {% endfor %}
+            </div>
+            <div id="col3" class="col">
+                {% for i in range(0, tries) %}
+                <span class="{{inserts[i][3]}} row" id="row{{i}}"></span>
+                {% endfor %}
+            </div>
+            <div id="colFb" class="col">
+                {% for i in range(0, tries) %}
+                    <div class="FbBox" id="row{{i}}">
+                        {% for j in range(0, 4) %}
+                        <span class="{{feedback[i][j]}}" id="FbPin{{j}}"></span>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+            {% endif %}
         </div>
     </div>
     <form action="/" method="POST" id="controls">

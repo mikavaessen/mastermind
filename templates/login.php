@@ -7,25 +7,14 @@
 {% block body %}
 <h3><U>Game Settings</U></h3>
 <main>
-    <form action="/" method="POST" id="UserSelect">
-        <h2>Nickname</h2>
-        <div class="FormDiv">
-            <select name="user", id="users">
-                {% for name in names %}
-                <option value="{{name}}">{{name}}</option>
-                {% endfor %}
-            </select>
-            <input type="text" placeholder="New Nickname" id="NewNameField" name="NewNameField">
-            <input type="submit" name="Add Nickname" id="AddNick" value="Add">
-            <input type="hidden" name="Msg" value="AddName">
-        </div>
-    </form>
     <form action="/" method="POST" id="Difficulty">
-        <h2>Difficulty</h2>
         <div class="FormDiv">
             <div id="HmDiv">
-                <input type="checkbox" class="item" name="hardmode">
-                <label for="hardmode">Hard Mode</label>
+                <label for="difficultySelect">Difficulty</label>
+                <select name="difficulty" id="difficultySelect" class="item">
+                    <option value="Easy">Easy</option>
+                    <option value="Hard">Hard</option>
+                </select>
             </div>
             <div id="ClDiv">
                 <input type="number" class="item" name="colours" step="1" min="6" max="10" value="6">
