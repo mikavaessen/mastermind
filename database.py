@@ -3,7 +3,7 @@ from datetime import datetime
 
 class Database():
     def __init__(self):
-        self.conStr = 'Driver={SQL Server};\nServer=DESKTOP-3V6BQPT\MSSQLSERVER01;\nDatabase=Mastermind;\nTrusted_Connection=yes;'
+        self.conStr = 'Driver={SQL Server};\nServer=DESKTOP-3V6BQPT;\nDatabase=Mastermind;\nTrusted_Connection=yes;'
         self.conn = pyodbc.connect(self.conStr)
 
     def getNames(self):

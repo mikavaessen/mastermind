@@ -4,6 +4,7 @@ import string
 import json
 import pyodbc
 from datetime import datetime
+from database import Database
 
 class GamePlay:
 
@@ -133,10 +134,11 @@ class user:
 if __name__ == "__main__":
     print('de main werkt')
     g = GamePlay(6, 4, "Easy")
-    u = user()
-    u.getAllUsers()
+    d = Database()
+    d.addGame("Leon", 22)
     test = ['Empty', 'Empty', 'Empty', 'Empty']
     while (test!=['Zwart', 'Zwart', 'Zwart', 'Zwart']):
         test, aantalPogingen = g.setGuessedColours(str(input("Guess the colour combination:")))
         print(test)
         print(aantalPogingen)
+        print(d.getNames())
