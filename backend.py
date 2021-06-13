@@ -14,7 +14,7 @@ class GamePlay:
         self.positionAmount = positionAmount
         self.gameMode = gameMode
         self.ctr = 0
-        self.allColours['Green', 'Yellow', 'Blue', 'Red', 'Orange','Purple','Pink', 'Brown', 'Silver', 'Aquamarine' ]
+        self.allColours = ['Green', 'Yellow', 'Blue', 'Red', 'Orange','Purple','Pink', 'Brown', 'Silver', 'Aquamarine' ]
         self.db = Database()
         if (colourAmount >= 6 and colourAmount <= 10 and positionAmount >= 4 and positionAmount <= 10):
             # genereer random getal in opgegeven range
