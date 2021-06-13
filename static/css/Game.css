@@ -119,3 +119,43 @@
     border-radius: 20%;
     transform: translate(-50%, -5%);
 }
+
+.Green{
+    background-color: green;
+}
+
+.Yellow{
+    background-color: yellow;
+}
+
+.Blue{
+    background-color: blue;
+}
+
+.Red{
+    background-color: red;
+}
+
+.Orange{
+    background-color: orange;
+}
+
+.Purple{
+    background-color: purple;
+}
+
+.Pink{
+    background-color: hotpink;
+}
+
+.Brown{
+    background-color: brown;
+}
+
+.Silver{
+    background-color: silver;
+}
+
+.Aquamarine{
+    background-color: aquamarine;
+}

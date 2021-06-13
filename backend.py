@@ -136,13 +136,18 @@ class user:
             #sets statistics of a single user after a game
 
 if __name__ == "__main__":
-    print('de main werkt')
-    g = GamePlay(6, 4, "Easy")
-    d = Database()
-    d.addGame("Leon", 22)
-    test = ['Empty', 'Empty', 'Empty', 'Empty']
-    while (test!=['Zwart', 'Zwart', 'Zwart', 'Zwart']):
-        test, aantalPogingen = g.setGuessedColours(str(input("Guess the colour combination:")))
-        print(test)
-        print(aantalPogingen)
-        print(d.getNames())
+    for i in range(500):
+        game = GamePlay(6, 6, 'Easy')
+        if game.num < 1000:
+            print(game.num)
+            break
+    #print('de main werkt')
+    #g = GamePlay(6, 4, "Easy")
+    #d = Database()
+    #d.addGame("Leon", 22)
+    #test = ['Empty', 'Empty', 'Empty', 'Empty']
+    #while (test!=['Zwart', 'Zwart', 'Zwart', 'Zwart']):
+     #   test, aantalPogingen = g.setGuessedColours(str(input("Guess the colour combination:")))
+      #  print(test)
+      #  print(aantalPogingen)
+      #  print(d.getNames())

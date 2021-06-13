@@ -2,15 +2,12 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from backend import GamePlay
+from Manager import Static
 from guess import Guess
 
-Game:GamePlay
-guesses = list()
-colours = list()
-names = list()
 app = Flask(__name__)
 @app.route('/', methods=['POST', 'GET'])
-def index(Game=Game, colours=colours, guesses=guesses, names=names):
+def index():
     correct = ['Zwart', 'Zwart', 'Zwart', 'Zwart']
     if request.method == 'POST':
         #Go to game settings
@@ -18,48 +15,46 @@ def index(Game=Game, colours=colours, guesses=guesses, names=names):
             return render_template('Login.php')
         #Show statistics
         elif request.form['Msg'] == 'stats':
-            names = Game.db.getNames()
-            return render_template('Statistics.php', name=names[0], players=names)
+            Static.Players = Static.Game.db.getNames()
+            return render_template('Statistics.php', name=Static.Players[0], players=Static.Players)
         elif request.form['Msg'] == 'statsFilter':
-            names = Game.db.getNames()
-            return render_template('Statistics.php', name=request.form['name'],  players=names)
+            Static.Players = Static.Game.db.getNames()
+            return render_template('Statistics.php', name=request.form['name'],  players=Static.Players)
         elif request.form['Msg'] == 'StartGame':
             #Start new game after fetching game settings
-            guesses = list()
+            Static.Guesses = list()
             colourAmount = int(request.form['colours'])
             #tryAmount = int(request.form['tries'])
             tryAmount = 4
             gameMode = request.form['difficulty']
-            Game = GamePlay(colourAmount, tryAmount, gameMode)
+            Static.Game = GamePlay(colourAmount, tryAmount, gameMode)
             inserts = list()
             feedbacks = list()
-            for i in range(Game.positionAmount):
+            for i in range(Static.Game.positionAmount):
                 inserts.append(['Empty', 'Empty', 'Empty', 'Empty'])
                 feedbacks.append(['Empty', 'Empty', 'Empty', 'Empty'])
-            colours = Game.allColours[:colourAmount]
-            print(colours)
-            return render_template('Game.php', inserts=inserts, feedback=feedbacks, tries=tryAmount, colours=colours)
+            Static.Colours = Static.Game.allColours[:colourAmount]
+            return render_template('Game.php', inserts=inserts, feedback=feedbacks, tries=tryAmount, colours=Static.Colours)
         elif request.form['Msg'] == 'CheckResult':
             # check result and redirect to game page or result
-            print(colours)
-            guessNum = int(0)
+            guessNum = ''
             guess = list()
             #First colour
-            guessNum += colours.index(request.form['colour0']) * 1000
+            guessNum += str(Static.Colours.index(request.form['colour0']) * 1000)
             guess.append(request.form['colour0'])
             #Second colour
-            guessNum += colours.index(request.form['colour1']) * 100
-            guess.append(request.form['colour0'])
+            guessNum += str(Static.Colours.index(request.form['colour1']) * 100)
+            guess.append(request.form['colour1'])
             #Third colour
-            guessNum += colours.index(request.form['colour2']) * 10
-            guess.append(request.form['colour0'])
+            guessNum += str(Static.Colours.index(request.form['colour2']) * 10)
+            guess.append(request.form['colour2'])
             #Fourth colour
-            guessNum += colours.index(request.form['colour3'])
-            guess.append(request.form['colour0'])
+            guessNum += str(Static.Colours.index(request.form['colour3']))
+            guess.append(request.form['colour3'])
             feedback = list()
-            feedback, temp = Game.setGuessedColours(guessNum)
-            guesses.append(Guess(guess, feedback))
-            if Game.ctr >= Game.positionAmount:
+            feedback, temp = Static.Game.setGuessedColours(guessNum)
+            Static.Guesses.append(Guess(guess, feedback))
+            if Static.Game.ctr >= Static.Game.positionAmount:
                 if feedback == correct:
                     return render_template('Result.php', result=True)
                 else:
@@ -70,13 +65,13 @@ def index(Game=Game, colours=colours, guesses=guesses, names=names):
                 else:
                     inserts = []
                     feedbacks = []
-                    for g in guesses:
+                    for g in Static.Guesses:
                         inserts.append(g.guesses)
                         feedbacks.append(g.feedback)
-                    for i in range(len(guesses), Game.positionAmount):
+                    for i in range(len(Static.Guesses), Static.Game.positionAmount):
                         inserts.append(['Empty', 'Empty', 'Empty', 'Empty'])
                         feedbacks.append(['Empty', 'Empty', 'Empty', 'Empty'])
-                    return render_template('Game.php', colours=colours, inserts=inserts, feedback=feedbacks, tries=Game.tryAmount)                        
+                    return render_template('Game.php', colours=Static.Colours, inserts=inserts, feedback=feedbacks, tries=Static.Game.positionAmount)                        
         elif request.form['Msg'] == 'return':
             #Return back to the homepage
             return render_template('index.php')
