@@ -13,29 +13,29 @@
             {% if inserts == 'no' %}
             <div id="col0" class="col">
                 {% for i in range(0, tries) %}
-                <span class="empty row" id="row{{i}}"></span>
+                <span class="Empty row" id="row{{i}}"></span>
                 {% endfor %}
             </div>
             <div id="col1" class="col">
                 {% for i in range(0, tries) %}
-                <span class="empty row" id="row{{i}}"></span>
+                <span class="Empty row" id="row{{i}}"></span>
                 {% endfor %}
             </div>
             <div id="col2" class="col">
                 {% for i in range(0, tries) %}
-                <span class="empty row" id="row{{i}}"></span>
+                <span class="Empty row" id="row{{i}}"></span>
                 {% endfor %}
             </div>
             <div id="col3" class="col">
                 {% for i in range(0, tries) %}
-                <span class="empty row" id="row{{i}}"></span>
+                <span class="Empty row" id="row{{i}}"></span>
                 {% endfor %}
             </div>
             <div id="colFb" class="col">
                 {% for i in range(0, tries) %}
                     <div class="FbBox" id="row{{i}}">
                         {% for j in range(0, 4) %}
-                        <span class="empty" id="FbPin{{j}}"></span>
+                        <span class="Empty" id="FbPin{{j}}"></span>
                         {% endfor %}
                     </div>
                 {% endfor %}
@@ -46,22 +46,22 @@
         </div>
     </div>
     <form action="/" method="POST" id="controls">
-        <select name="colour0" class="colourSelect">
+        <select name="colour0" id="colour0" class="colourSelect">
             {% for col in colours %}
             <option value="{{col}}">{{col}}</option>
             {% endfor %}
         </select>
-        <select name="colour1" class="colourSelect">
+        <select name="colour1" id="colour1" class="colourSelect">
             {% for col in colours %}
             <option value="{{col}}">{{col}}</option>
             {% endfor %}
         </select>
-        <select name="colour2" class="colourSelect">
+        <select name="colour2" id="colour2" class="colourSelect">
             {% for col in colours %}
             <option value="{{col}}">{{col}}</option>
             {% endfor %}
         </select>
-        <select name="colour3" class="colourSelect">
+        <select name="colour3" id="colour3" class="colourSelect">
             {% for col in colours %}
             <option value="{{col}}">{{col}}</option>
             {% endfor %}

@@ -47,7 +47,7 @@ def index():
         elif request.form['Msg'] == 'return':
             #Return back to the homepage
             return render_template('index.php')
-    return render_template('Game.php')
+    return render_template('Game.php', inserts='no', tries=4, colours=['Rood', 'Geel', 'Groen'])
 
 if __name__ == '__main__':
     app.run(debug=True)

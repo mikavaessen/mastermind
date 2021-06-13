@@ -8,10 +8,10 @@
 
 #Board{
     position: absolute;
-    height: 90%;
+    height: 99%;
     width: 25%;
     left: 50%;
-    bottom: 20px;
+    top: 0px;
     transform: translateX(-50%);
     border-style: solid;
     border-radius: 20px;
@@ -20,10 +20,64 @@
 
 #controls{
     position: absolute;
-    bottom: 15%;
-    height: 8%;
-    width: 100%;
-    transform: translateY(50%);
+    left: 0px;
+    padding: 1%;
+    height: 95%;
+    width: 36.9%;
+}
+
+.colourSelect{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 40px;
+    font-family: 'Courier New';
+    font-size: 20px;
+}
+
+#colour0{
+    top: 16%;
+}
+
+#colour1{
+    top: 33%;
+}
+
+#colour2{
+    top: 50%;
+}
+
+#colour3{
+    top: 67%;
+}
+
+#GuessButton{
+    position: absolute;
+    top: 83%;
+    left: 50%;
+    width: 240px;
+    height: 60px;
+    font-size: 20px;
+    transform: translate(-50%, -50%);
+}
+
+#StopForm{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 37.5%;
+    height: 100%;
+}
+
+#StopButton{
+    position: absolute;
+    top: 83%;
+    left: 50%;
+    width: 240px;
+    height: 60px;
+    font-size: 20px;
+    transform: translate(-50%, -50%);
 }
 
 .Empty{
