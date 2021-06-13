@@ -16,6 +16,7 @@ class GamePlay:
         self.ctr = 0
         self.allColours = ['Green', 'Yellow', 'Blue', 'Red', 'Orange','Purple','Pink', 'Brown', 'Silver', 'Aquamarine' ]
         self.db = Database()
+        self.lastGuess = 0
         if (colourAmount >= 6 and colourAmount <= 10 and positionAmount >= 4 and positionAmount <= 10):
             # genereer random getal in opgegeven range
             s = ""
@@ -38,6 +39,7 @@ class GamePlay:
     def setGuessedColours(self, n=0000):
         # input voor testen
         returnArray = ['Empty', 'Empty', 'Empty', 'Empty']
+        self.lastGuess = n
         # Als input gelijk is aan ingegeven waarde
         if (n == self.num):
             print("Great! You guessed the number! You're a Mastermind!")
