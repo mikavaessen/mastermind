@@ -2,6 +2,8 @@ import random
 from random import choice
 import string
 import json
+import pyodbc
+from datetime import datetime
 
 class GamePlay:
 
@@ -16,13 +18,13 @@ class GamePlay:
             s = ""
             if gameMode == "Hard":
                 for x in range(4):
-                    s = s + str(random.randint(0, colourAmount))
+                    s = s + str(random.randint(0, colourAmount-1))
                 print(s)
                 self.num = s
             if gameMode == "Easy":
                 randomNumber = []
                 for x in range(4):
-                    randomNumber.append(choice([i for i in range(0, colourAmount) if i not in randomNumber])) # random getal opslaan in array en voorkomen dat deze er dubbel in voorkomt
+                    randomNumber.append(choice([i for i in range(0, colourAmount-1) if i not in randomNumber])) # random getal opslaan in array en voorkomen dat deze er dubbel in voorkomt
                     s = s + str(randomNumber[x])
                 print(s)
                 self.num = s
@@ -130,7 +132,7 @@ class user:
 
 if __name__ == "__main__":
     print('de main werkt')
-    g = GamePlay(6, 4, "Hard")
+    g = GamePlay(6, 4, "Easy")
     u = user()
     u.getAllUsers()
     test = ['Empty', 'Empty', 'Empty', 'Empty']
