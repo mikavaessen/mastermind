@@ -11,7 +11,7 @@
 {% block body %}
 <h3><u>Result</u></h3>
 <main>
-    {% if result == TRUE %}
+    {% if result == 'TRUE' %}
     <span style="border-color: green;"></span>
     <p class="CelText">You won,<br>good job!</p>
     {% else %}
@@ -19,8 +19,9 @@
     <p class="CelText">You lost,<br>better luck next time...</p>
     {% endif %}
     <form action="/" method="POST">
+        <input type="text"  placeholder="Enter a nickname" name="nickName" id="nameField">
         <input type="submit" value="Return to start screen" id="ReturnButton">
-        <input type="hidden" name="Msg" value="return">
+        <input type="hidden" name="Msg" value="returnEndGame">
     </form>
 </main>
 {% endblock %}

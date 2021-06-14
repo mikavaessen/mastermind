@@ -21,7 +21,7 @@
                 <label for="colours">Colours<br>(6-10)</label>
             </div>
             <div id="TryDiv">
-                <input type="number" class="item" name="'tries" step="1" min="4" max="10" value="4">
+                <input type="number" class="item" name="tries" step="1" min="4" max="10" value="4">
                 <label for="tries">Tries<br>(4-10)</label>
             </div>
         </div>

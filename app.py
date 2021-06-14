@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import render_template
 from flask import request
+from flask import flash
 from backend import GamePlay
 from Manager import Static
 from guess import Guess
@@ -24,8 +25,7 @@ def index():
             #Start new game after fetching game settings
             Static.Guesses = list()
             colourAmount = int(request.form['colours'])
-            #tryAmount = int(request.form['tries'])
-            tryAmount = 4
+            tryAmount = int(request.form['tries'])
             gameMode = request.form['difficulty']
             Static.Game = GamePlay(colourAmount, tryAmount, gameMode)
             inserts = list()
@@ -40,28 +40,29 @@ def index():
             guessNum = ''
             guess = list()
             #First colour
-            guessNum += str(Static.Colours.index(request.form['colour0']) * 1000)
+            guessNum += str(Static.Colours.index(request.form['colour0']) * 1000)[0]
             guess.append(request.form['colour0'])
             #Second colour
-            guessNum += str(Static.Colours.index(request.form['colour1']) * 100)
+            guessNum += str(Static.Colours.index(request.form['colour1']) * 100)[0]
             guess.append(request.form['colour1'])
             #Third colour
-            guessNum += str(Static.Colours.index(request.form['colour2']) * 10)
+            guessNum += str(Static.Colours.index(request.form['colour2']) * 10)[0]
             guess.append(request.form['colour2'])
             #Fourth colour
-            guessNum += str(Static.Colours.index(request.form['colour3']))
+            guessNum += str(Static.Colours.index(request.form['colour3']))[0]
             guess.append(request.form['colour3'])
             feedback = list()
             feedback, temp = Static.Game.setGuessedColours(guessNum)
+            print(guessNum, feedback)
             Static.Guesses.append(Guess(guess, feedback))
             if Static.Game.ctr >= Static.Game.positionAmount:
                 if feedback == correct:
-                    return render_template('Result.php', result=True)
+                    return render_template('Result.php', result='TRUE')
                 else:
-                    return render_template('Result.php', result=True)
+                    return render_template('Result.php', result='FALSE')
             else:
                 if feedback == correct:
-                    return render_template('Result.php', result=True)
+                    return render_template('Result.php', result='TRUE')
                 else:
                     inserts = []
                     feedbacks = []
@@ -72,10 +73,19 @@ def index():
                         inserts.append(['Empty', 'Empty', 'Empty', 'Empty'])
                         feedbacks.append(['Empty', 'Empty', 'Empty', 'Empty'])
                     return render_template('Game.php', colours=Static.Colours, inserts=inserts, feedback=feedbacks, tries=Static.Game.positionAmount)                        
+        elif request.form['Msg'] == 'returnEndGame':
+            name = request.form['name']
+            if len(name) == 0:
+                flash('Result was not saved to the database')
+                return render_template('index.php')
+            else:
+                Static.Game.db.addGame(name, Static.Game.ctr)
+                flash(f'Game was saved with nickname\n{name}')
+                return render_template('index.php')
         elif request.form['Msg'] == 'return':
             #Return back to the homepage
             return render_template('index.php')
-    return render_template('index.php', inserts='no', tries=4, colours=['Rood', 'Geel', 'Groen'])
+    return render_template('index.php')
 
 if __name__ == '__main__':
     app.run(debug=True)
