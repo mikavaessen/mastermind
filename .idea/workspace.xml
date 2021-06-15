@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3241f57-7217-499a-b0e9-478bd815a723" name="Default Changelist" comment="Algoritme aangepast adhv praktijktests">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +130,7 @@
       <workItem from="1623498920333" duration="15377000" />
       <workItem from="1623530983253" duration="385000" />
       <workItem from="1623582360710" duration="7266000" />
-      <workItem from="1623780468441" duration="3863000" />
+      <workItem from="1623780468441" duration="4292000" />
     </task>
     <task id="LOCAL-00001" summary="database added">
       <created>1623585174381</created>
@@ -182,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623785305181</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Algoritme aangepast adhv praktijktests">
+      <created>1623785796708</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1623785796708</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -66,17 +66,7 @@ class GamePlay:
                     count += 1
                     # goede cijfer opgeslagen in array
                     correct.append(digit)
-                else:
-                    continue
 
-            # wanneer niet alles goed is geraden
-            if (count < 4) and (count != 0):
-                print("Not quite the number. But you did get ", count, " digit(s) correct!")
-                print("Also these numbers in your input were correct.")
-
-
-                print('\n')
-                print('\n')
 
             guessedArray = [char for char in str(n)]
             correctArray = [char for char in str(self.num)]
@@ -87,7 +77,7 @@ class GamePlay:
 
                     if i == guessedArray[j] and i not in checkArray:
                         countCorrectNumber += 1
-            checkArray.append(i) #zorgt ervoor dat er niet dubbel gecheckt wordt voor hetzelfde getal
+            checkArray.append(guessedArray[j]) #zorgt ervoor dat er niet dubbel gecheckt wordt voor hetzelfde getal
             countCorrectNumber = countCorrectNumber-count
             print(countCorrectNumber)
 
