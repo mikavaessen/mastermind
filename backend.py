@@ -61,7 +61,6 @@ class GamePlay:
 
             # for loop draait de lengte
             for i, digit in enumerate(n):
-                # checking for equality of digits
                 if (digit == self.num[i]):
                     # aantal goed geraden cijfers wordt opgehoogd
                     count += 1
@@ -81,11 +80,14 @@ class GamePlay:
 
             guessedArray = [char for char in str(n)]
             correctArray = [char for char in str(self.num)]
+            checkArray= []
             countCorrectNumber = 0 #houdt overeenkomende getallen die niet op dezelfde positie staan bij
             for j in range(0, 4): #telt het aantal overeenkomende getallen
                 for i in correctArray:
-                    if i == guessedArray[j]:
+
+                    if i == guessedArray[j] and i not in checkArray:
                         countCorrectNumber += 1
+                    checkArray.append(i) #zorgt ervoor dat er niet dubbel gecheckt wordt voor hetzelfde getal
             countCorrectNumber = countCorrectNumber-count
             print(countCorrectNumber)
 
