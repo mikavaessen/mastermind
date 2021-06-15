@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d3241f57-7217-499a-b0e9-478bd815a723" name="Default Changelist" comment="Overbodige variabelen verwijderd">
+    <list default="true" id="d3241f57-7217-499a-b0e9-478bd815a723" name="Default Changelist" comment="Algoritme aangepast adhv praktijktests">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -130,7 +131,7 @@
       <workItem from="1623498920333" duration="15377000" />
       <workItem from="1623530983253" duration="385000" />
       <workItem from="1623582360710" duration="7266000" />
-      <workItem from="1623780468441" duration="3356000" />
+      <workItem from="1623780468441" duration="3863000" />
     </task>
     <task id="LOCAL-00001" summary="database added">
       <created>1623585174381</created>
@@ -174,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623784659908</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Algoritme aangepast adhv praktijktests">
+      <created>1623785305181</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1623785305181</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,7 +205,8 @@
     <MESSAGE value="connectionstring added" />
     <MESSAGE value="colours added" />
     <MESSAGE value="Overbodige variabelen verwijderd" />
-    <option name="LAST_COMMIT_MESSAGE" value="Overbodige variabelen verwijderd" />
+    <MESSAGE value="Algoritme aangepast adhv praktijktests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Algoritme aangepast adhv praktijktests" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/mastermindV3$database.coverage" NAME="database Coverage Results" MODIFIED="1623587545012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

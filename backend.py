@@ -87,7 +87,7 @@ class GamePlay:
 
                     if i == guessedArray[j] and i not in checkArray:
                         countCorrectNumber += 1
-                    checkArray.append(i) #zorgt ervoor dat er niet dubbel gecheckt wordt voor hetzelfde getal
+            checkArray.append(i) #zorgt ervoor dat er niet dubbel gecheckt wordt voor hetzelfde getal
             countCorrectNumber = countCorrectNumber-count
             print(countCorrectNumber)
 
@@ -102,33 +102,6 @@ class GamePlay:
                 for i in range(count,count+countCorrectNumber):
                     returnArray[i] = 'Wit'
         return returnArray, self.ctr
-
-
-class user:
-    #https://www.freecodecamp.org/news/python-read-json-file-how-to-load-json-from-a-file-and-parse-dumps/
-    def __init__(self):
-            self.user=0
-
-    def getAllUsers(self):
-        #gets all usernames in database
-        # Opening JSON file
-        with open('User.json', ) as file:
-            data = json.load(file)
-        # returns JSON object as
-        # a dictionary
-        print(data["users"]["user"][1]["name"])
-        # Iterating through the json
-        # list
-
-
-
-
-        #def addUser(self):
-            #add user to database
-        #def getStatisticsUser(self):
-            #gets the statistics of a single user
-        #def setStatisticsUser(self):
-            #sets statistics of a single user after a game
 
 if __name__ == "__main__":
     for i in range(500):
