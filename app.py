@@ -15,19 +15,19 @@ def index():
         print(request.form['Msg'])
         #Go to game settings
         if request.form['Msg'] == 'login':
-            return render_template('Login.php')
+            return render_template('Login.html')
         #Show statistics
         elif request.form['Msg'] == 'stats':
             Static.Players = Static.Game.db.getNames()
             if len(Static.Players) > 0:
                 data = Static.Game.db.getPlayerData(Static.Players[0])
-                return render_template('Statistics.php', name=Static.Players[0], players=Static.Players, data=data)
+                return render_template('Statistics.html', name=Static.Players[0], players=Static.Players, data=data)
             else:
-                return render_template('Statistics.php', data='no')
+                return render_template('Statistics.html', data='no')
         elif request.form['Msg'] == 'statsFilter':
             Static.Players = Static.Game.db.getNames()
             data = Static.Game.db.getPlayerData(request.form['name'])
-            return render_template('Statistics.php', name=request.form['name'],  players=Static.Players, data=data)
+            return render_template('Statistics.html', name=request.form['name'],  players=Static.Players, data=data)
         elif request.form['Msg'] == 'StartGame':
             #Start new game after fetching game settings
             Static.Guesses = list()
@@ -41,7 +41,7 @@ def index():
                 inserts.append(['Empty', 'Empty', 'Empty', 'Empty'])
                 feedbacks.append(['Empty', 'Empty', 'Empty', 'Empty'])
             Static.Colours = Static.Game.allColours[:colourAmount]
-            return render_template('Game.php', inserts=inserts, feedback=feedbacks, tries=tryAmount, colours=Static.Colours)
+            return render_template('Game.html', inserts=inserts, feedback=feedbacks, tries=tryAmount, colours=Static.Colours)
         elif request.form['Msg'] == 'CheckResult':
             # check result and redirect to game page or result
             guessNum = ''
@@ -64,12 +64,12 @@ def index():
             Static.Guesses.append(Guess(guess, feedback))
             if Static.Game.ctr >= Static.Game.positionAmount:
                 if feedback == correct:
-                    return render_template('Result.php', result='TRUE')
+                    return render_template('Result.html', result='TRUE')
                 else:
-                    return render_template('Result.php', result='FALSE')
+                    return render_template('Result.html', result='FALSE')
             else:
                 if feedback == correct:
-                    return render_template('Result.php', result='TRUE')
+                    return render_template('Result.html', result='TRUE')
                 else:
                     inserts = []
                     feedbacks = []
@@ -79,19 +79,19 @@ def index():
                     for i in range(len(Static.Guesses), Static.Game.positionAmount):
                         inserts.append(['Empty', 'Empty', 'Empty', 'Empty'])
                         feedbacks.append(['Empty', 'Empty', 'Empty', 'Empty'])
-                    return render_template('Game.php', colours=Static.Colours, inserts=inserts, feedback=feedbacks, tries=Static.Game.positionAmount)                        
+                    return render_template('Game.html', colours=Static.Colours, inserts=inserts, feedback=feedbacks, tries=Static.Game.positionAmount)                        
         elif request.form['Msg'] == 'returnEndGame':
             name = request.form['nickName']
             result = request.form['result']
             if len(name) == 0:
-                return render_template('index.php')
+                return render_template('index.html')
             else:
                 Static.Game.db.addGame(name, Static.Game.ctr, result, Static.Game.gameMode)
-                return render_template('index.php')
+                return render_template('index.html')
         elif request.form['Msg'] == 'return':
             #Return back to the homepage
-            return render_template('index.php')
-    return render_template('index.php')
+            return render_template('index.html')
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
