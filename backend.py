@@ -86,17 +86,15 @@ class GamePlay:
                 for i in correctArray:
                     if i == guessedArray[j]:
                         countCorrectNumber += 1
-            # wanneer alles fout is geraden
             countCorrectNumber = countCorrectNumber-count
             print(countCorrectNumber)
 
-            if (count == 0):
-                print("None of the numbers in your input match.")
+
             if n == self.num:
                 print("You've become a Mastermind!")
                 print("It took you only", self.ctr, "tries.")
             if count >0:
-                for i in range(0,count):
+                for i in range(0, count):
                     returnArray[i] = 'Zwart'
             if countCorrectNumber > 0:
                 for i in range(count,count+countCorrectNumber):
