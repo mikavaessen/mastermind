@@ -77,7 +77,7 @@ class GamePlay:
 
                     if i == guessedArray[j] and i not in checkArray:
                         countCorrectNumber += 1
-            checkArray.append(guessedArray[j]) #zorgt ervoor dat er niet dubbel gecheckt wordt voor hetzelfde getal
+                checkArray.append(guessedArray[j]) #zorgt ervoor dat er niet dubbel gecheckt wordt voor hetzelfde getal
             countCorrectNumber = countCorrectNumber-count
             print(countCorrectNumber)
 
@@ -94,18 +94,18 @@ class GamePlay:
         return returnArray, self.ctr
 
 if __name__ == "__main__":
-    for i in range(500):
-        game = GamePlay(6, 6, 'Easy')
-        if game.num < 1000:
-            print(game.num)
-            break
+    #for i in range(500):
+    #    game = GamePlay(6, 6, 'Easy')
+    #    if game.num < 1000:
+    #        print(game.num)
+    #        break
     #print('de main werkt')
-    #g = GamePlay(6, 4, "Easy")
+    g = GamePlay(6, 4, "Hard")
     #d = Database()
     #d.addGame("Leon", 22)
-    #test = ['Empty', 'Empty', 'Empty', 'Empty']
-    #while (test!=['Zwart', 'Zwart', 'Zwart', 'Zwart']):
-     #   test, aantalPogingen = g.setGuessedColours(str(input("Guess the colour combination:")))
+    test = ['Empty', 'Empty', 'Empty', 'Empty']
+    while (test!=['Zwart', 'Zwart', 'Zwart', 'Zwart']):
+        test, aantalPogingen = g.setGuessedColours(str(input("Guess the colour combination:")))
       #  print(test)
       #  print(aantalPogingen)
       #  print(d.getNames())
