@@ -20,7 +20,12 @@
     {% endif %}
     <form action="/" method="POST">
         <input type="text"  placeholder="Enter a nickname" name="nickName" id="nameField">
-        <input type="submit" value="Return to start screen" id="ReturnButton">
+        <input type="submit" value="Submit result" id="ReturnButton">
+        {% if result == 'TRUE' %}
+        <input type="hidden" name="result" value="Win">
+        {% else %}
+        <input type="hidden" name="result" value="Loss">
+        {% endif %}
         <input type="hidden" name="Msg" value="returnEndGame">
     </form>
 </main>

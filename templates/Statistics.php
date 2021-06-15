@@ -4,6 +4,10 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/statistics.css')}}">
 <title>MM | Statistics</title>
 {% endblock %}
+{% set gameName = 2 %}
+{% set gameResult = 4 %} 
+{% set gameTries = 3 %}
+{% set gameMode = 5 %}
 {% block body %}
 <h3><u>Statistics</u></h3>
 <main>
@@ -26,18 +30,12 @@
     </aside>
     <div id="PlayerInfo">
         <p id="PlayerName">Player: {{name}}</p>
-        {% for i in range(8) %}
+        {% for game in data %}
         <div class="Game">
-            <p class="GameName">Game<br>hiuwofeh</p>
-            <p class="GameResult">Result:<br>hoewfuiahqf</p>
-            <p class="GameGuesses">Guesses:<br>25</p>
-        </div><br>
-        {% endfor %}
-        {% for game in games %}
-        <div class="Game">
-            <p class="GameName">Game {{game.playTime}}</p>
-            <p class="GameResult">Result {{game.result}}</p>
-            <p class="GameGuesses">Guesses {{game.guesses}}</p>
+            <p class="GameName">Game:<br>{{game[gameName]}}</p>
+            <p class="GameResult">Result: {{game[gameResult]}}</p>
+            <p class="GameGuesses">Guesses: {{game[gameTries]}}</p>
+            <p class="GameDifficulty">Difficulty: {{game[gameMode]}}</p>
         <br>
         </div>
         {% endfor %}

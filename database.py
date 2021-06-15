@@ -18,14 +18,17 @@ class Database():
 
     def getPlayerData(self, name:str):
         cursor = self.conn.cursor()
-        cursor.execute(f"SELECT * FROM data WHERE name = {name}")
-        return cursor
+        cursor.execute(f"SELECT * FROM data WHERE Name = '{name}'")
+        retVal = []
+        for row in cursor:
+            retVal.append(row)
+        return retVal
 
-    def addGame(self, name:str, tries:int):
+    def addGame(self, name:str, tries:int, result:str, difficulty:str):
         if self.checkForbidden(name):
             return
         cursor = self.conn.cursor()
-        cursor.execute(f"EXEC addGame '{name}', {tries}")
+        cursor.execute(f"EXEC addGame '{name}', {tries}, '{result}', '{difficulty}'")
         self.conn.commit()
 
     def checkForbidden(self, string):

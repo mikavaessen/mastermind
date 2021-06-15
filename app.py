@@ -1,26 +1,30 @@
 from flask import Flask
 from flask import render_template
 from flask import request
-from flask import flash
 from backend import GamePlay
 from Manager import Static
 from guess import Guess
+
+Static.Game = GamePlay(6, 4, 'Easy')
 
 app = Flask(__name__)
 @app.route('/', methods=['POST', 'GET'])
 def index():
     correct = ['Zwart', 'Zwart', 'Zwart', 'Zwart']
     if request.method == 'POST':
+        print(request.form['Msg'])
         #Go to game settings
         if request.form['Msg'] == 'login':
             return render_template('Login.php')
         #Show statistics
         elif request.form['Msg'] == 'stats':
             Static.Players = Static.Game.db.getNames()
-            return render_template('Statistics.php', name=Static.Players[0], players=Static.Players)
+            data = Static.Game.db.getPlayerData(Static.Players[0])
+            return render_template('Statistics.php', name=Static.Players[0], players=Static.Players, data=data)
         elif request.form['Msg'] == 'statsFilter':
             Static.Players = Static.Game.db.getNames()
-            return render_template('Statistics.php', name=request.form['name'],  players=Static.Players)
+            data = Static.Game.db.getPlayerData(request.form['name'])
+            return render_template('Statistics.php', name=request.form['name'],  players=Static.Players, data=data)
         elif request.form['Msg'] == 'StartGame':
             #Start new game after fetching game settings
             Static.Guesses = list()
@@ -74,13 +78,12 @@ def index():
                         feedbacks.append(['Empty', 'Empty', 'Empty', 'Empty'])
                     return render_template('Game.php', colours=Static.Colours, inserts=inserts, feedback=feedbacks, tries=Static.Game.positionAmount)                        
         elif request.form['Msg'] == 'returnEndGame':
-            name = request.form['name']
+            name = request.form['nickName']
+            result = request.form['result']
             if len(name) == 0:
-                flash('Result was not saved to the database')
                 return render_template('index.php')
             else:
-                Static.Game.db.addGame(name, Static.Game.ctr)
-                flash(f'Game was saved with nickname\n{name}')
+                Static.Game.db.addGame(name, Static.Game.ctr, result, Static.Game.gameMode)
                 return render_template('index.php')
         elif request.form['Msg'] == 'return':
             #Return back to the homepage

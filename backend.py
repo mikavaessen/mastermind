@@ -39,18 +39,13 @@ class GamePlay:
     def setGuessedColours(self, n=0000):
         # input voor testen
         returnArray = ['Empty', 'Empty', 'Empty', 'Empty']
-        self.lastGuess = n
+        self.ctr += 1
         # Als input gelijk is aan ingegeven waarde
         if (n == self.num):
             print("Great! You guessed the number! You're a Mastermind!")
             returnArray = ['Zwart', 'Zwart', 'Zwart', 'Zwart']
         else:
             # initializeer counter
-
-            # variable increments every time the loop
-            # is executed, giving an idea of how many
-            # guesses were made.
-            self.ctr += 1
 
             count = 0
 
@@ -65,13 +60,13 @@ class GamePlay:
             correct = []
 
             # for loop draait de lengte
-            for i in range(0, 3):
+            for i, digit in enumerate(n):
                 # checking for equality of digits
-                if (n[i] == self.num[i]):
+                if (digit == self.num[i]):
                     # aantal goed geraden cijfers wordt opgehoogd
                     count += 1
                     # goede cijfer opgeslagen in array
-                    correct.append(n[i])
+                    correct.append(digit)
                 else:
                     continue
 
