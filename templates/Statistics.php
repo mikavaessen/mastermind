@@ -12,6 +12,9 @@
 <h3><u>Statistics</u></h3>
 <main>
     <aside id="PlayerList">
+        {% if data == 'no' %}
+        <p id="NoDataAside">No games present in database</p>
+        {% else %}
         <form action="/" method="POST" id="PlayerListForm">
             <h4>Players</h4>   
             <div id="PlayerListEntries">
@@ -27,8 +30,12 @@
             </div>
             <input type="hidden" name="Msg" value="statsFilter">
         </form>
+        {% endif %}
     </aside>
     <div id="PlayerInfo">
+        {% if data == 'no' %}
+        <p id="NoDataMain">No games present in database</p>
+        {% else %}
         <p id="PlayerName">Player: {{name}}</p>
         {% for game in data %}
         <div class="Game">
@@ -39,6 +46,7 @@
         <br>
         </div>
         {% endfor %}
+        {% endif %}
     </div>
     <form action="/" method="POST" id="ExitForm">
         <input type="submit" value="Back" id="ExitButton">

@@ -19,8 +19,11 @@ def index():
         #Show statistics
         elif request.form['Msg'] == 'stats':
             Static.Players = Static.Game.db.getNames()
-            data = Static.Game.db.getPlayerData(Static.Players[0])
-            return render_template('Statistics.php', name=Static.Players[0], players=Static.Players, data=data)
+            if len(Static.Players) > 0:
+                data = Static.Game.db.getPlayerData(Static.Players[0])
+                return render_template('Statistics.php', name=Static.Players[0], players=Static.Players, data=data)
+            else:
+                return render_template('Statistics.php', data='no')
         elif request.form['Msg'] == 'statsFilter':
             Static.Players = Static.Game.db.getNames()
             data = Static.Game.db.getPlayerData(request.form['name'])
