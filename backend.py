@@ -15,7 +15,7 @@ class GamePlay:
         self.gameMode = gameMode
         self.ctr = 0
         self.allColours = ['Green', 'Yellow', 'Blue', 'Red', 'Orange','Purple','Pink', 'Brown', 'Silver', 'Aquamarine' ]
-        self.db = Database()
+        #self.db = Database()
         self.lastGuess = 0
         if (colourAmount >= 6 and colourAmount <= 10 and positionAmount >= 4 and positionAmount <= 10):
             # genereer random getal in opgegeven range
@@ -70,14 +70,15 @@ class GamePlay:
 
             guessedArray = [char for char in str(n)]
             correctArray = [char for char in str(self.num)]
-            checkArray= []
+            booleanCorrect = False #boolean that checks for a matching number
             countCorrectNumber = 0 #houdt overeenkomende getallen die niet op dezelfde positie staan bij
             for j in range(0, 4): #telt het aantal overeenkomende getallen
+                booleanCorrect = False
                 for i in correctArray:
-
-                    if i == guessedArray[j] and i not in checkArray:
+                    if i == guessedArray[j] and booleanCorrect == False:
                         countCorrectNumber += 1
-                checkArray.append(guessedArray[j]) #zorgt ervoor dat er niet dubbel gecheckt wordt voor hetzelfde getal
+                        booleanCorrect = True #only one number may be correct
+
             countCorrectNumber = countCorrectNumber-count
             print(countCorrectNumber)
 
@@ -106,6 +107,6 @@ if __name__ == "__main__":
     test = ['Empty', 'Empty', 'Empty', 'Empty']
     while (test!=['Zwart', 'Zwart', 'Zwart', 'Zwart']):
         test, aantalPogingen = g.setGuessedColours(str(input("Guess the colour combination:")))
-      #  print(test)
+        print(test)
       #  print(aantalPogingen)
       #  print(d.getNames())
