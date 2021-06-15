@@ -28,7 +28,7 @@ class GamePlay:
             if gameMode == "Easy":
                 randomNumber = []
                 for x in range(4):
-                    randomNumber.append(choice([i for i in range(0, colourAmount-1) if i not in randomNumber])) # random getal opslaan in array en voorkomen dat deze er dubbel in voorkomt
+                    randomNumber.append(choice([i for i in range(colourAmount) if i not in randomNumber])) # random getal opslaan in array en voorkomen dat deze er dubbel in voorkomt
                     s = s + str(randomNumber[x])
                 print(s)
                 self.num = s
