@@ -2,9 +2,7 @@ import random
 from random import choice
 import string
 import json
-import pyodbc
 from datetime import datetime
-from database import Database
 
 class GamePlay:
 
@@ -15,7 +13,6 @@ class GamePlay:
         self.gameMode = gameMode
         self.ctr = 0
         self.allColours = ['Green', 'Yellow', 'Blue', 'Red', 'Orange','Purple','Pink', 'Brown', 'Silver', 'Aquamarine' ]
-        self.db = Database()
         self.lastGuess = 0
         if (colourAmount >= 6 and colourAmount <= 10 and positionAmount >= 4 and positionAmount <= 10):
             # genereer random getal in opgegeven range

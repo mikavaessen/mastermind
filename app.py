@@ -15,17 +15,17 @@ def index():
         print(request.form['Msg'])
         #Go to game settings
         if request.form['Msg'] == 'login':
-            return render_template('Login.html')
+            return render_template('login.html')
         #Show statistics
         elif request.form['Msg'] == 'stats':
-            Static.Players = Static.Game.db.getNames()
+            Static.Players = []
             if len(Static.Players) > 0:
                 data = Static.Game.db.getPlayerData(Static.Players[0])
                 return render_template('Statistics.html', name=Static.Players[0], players=Static.Players, data=data)
             else:
                 return render_template('Statistics.html', data='no')
         elif request.form['Msg'] == 'statsFilter':
-            Static.Players = Static.Game.db.getNames()
+            Static.Players = []
             data = Static.Game.db.getPlayerData(request.form['name'])
             return render_template('Statistics.html', name=request.form['name'],  players=Static.Players, data=data)
         elif request.form['Msg'] == 'StartGame':
@@ -86,7 +86,6 @@ def index():
             if len(name) == 0:
                 return render_template('index.html')
             else:
-                Static.Game.db.addGame(name, Static.Game.ctr, result, Static.Game.gameMode)
                 return render_template('index.html')
         elif request.form['Msg'] == 'return':
             #Return back to the homepage
@@ -94,5 +93,5 @@ def index():
     return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='192.168.178.50')
 
