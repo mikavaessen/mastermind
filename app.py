@@ -15,7 +15,7 @@ def index():
         print(request.form['Msg'])
         #Go to game settings
         if request.form['Msg'] == 'login':
-            return render_template('Login.html')
+            return render_template('login.html')
         #Show statistics
         elif request.form['Msg'] == 'stats':
             Static.Players = Static.Game.db.getNames()
