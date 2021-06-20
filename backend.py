@@ -1,9 +1,5 @@
 import random
 from random import choice
-import string
-import json
-import pyodbc
-from datetime import datetime
 from database import Database
 
 class GamePlay:
@@ -14,7 +10,7 @@ class GamePlay:
         self.positionAmount = positionAmount
         self.gameMode = gameMode
         self.ctr = 0
-        self.allColours = ['Green', 'Yellow', 'Blue', 'Red', 'Orange','Purple','Pink', 'Brown', 'Silver', 'Aquamarine' ]
+        self.allColours = ['Green', 'Yellow', 'Blue', 'Red', 'Orange', 'Purple', 'Pink', 'Brown', 'Silver', 'Aquamarine' ]
         self.db = Database()
         self.lastGuess = 0
         if (colourAmount >= 6 and colourAmount <= 10 and positionAmount >= 4 and positionAmount <= 10):
@@ -32,7 +28,6 @@ class GamePlay:
                     s = s + str(randomNumber[x])
                 print(s)
                 self.num = s
-
         else:
             print('foute invoer')
 
@@ -42,21 +37,15 @@ class GamePlay:
         self.ctr += 1
         # Als input gelijk is aan ingegeven waarde
         if (n == self.num):
-            print("Great! You guessed the number! You're a Mastermind!")
             returnArray = ['Zwart', 'Zwart', 'Zwart', 'Zwart']
         else:
             # initializeer counter
 
             count = 0
-
-            # explicit type conversion of an integer to
-            # a string in order to ease extraction of digits
+            # Converteerd int naar str
             n = str(n)
-
-            # explicit type conversion of a string to an integer
             self.num = str(self.num)
-
-            # correct[] list stores digits which are correct
+            #slaat goede getallen op
             correct = []
 
             # for loop draait de lengte
@@ -67,13 +56,12 @@ class GamePlay:
                     # goede cijfer opgeslagen in array
                     correct.append(digit)
 
-
+            #loop voor het tellen van overeenkomende getallen
             guessedArray = [char for char in str(n)]
             correctArray = [char for char in str(self.num)]
-            booleanCorrect = False #boolean that checks for a matching number
             countCorrectNumber = 0 #houdt overeenkomende getallen die niet op dezelfde positie staan bij
             for j in range(0, 4): #telt het aantal overeenkomende getallen
-                booleanCorrect = False
+                booleanCorrect = False #zorgt ervoor dat er bij een correct getal maar 1 ophoging plaatsvindt
                 for i in correctArray:
                     if i == guessedArray[j] and booleanCorrect == False:
                         countCorrectNumber += 1
@@ -81,11 +69,11 @@ class GamePlay:
 
             countCorrectNumber = countCorrectNumber-count
             print(countCorrectNumber)
-
-
+            #controle gegenereerde waardes
             if n == self.num:
-                print("You've become a Mastermind!")
-                print("It took you only", self.ctr, "tries.")
+                print("Gefeliciteerd! je bent een Mastermind!")
+                print("Je hebt er", self.ctr, "pogingen over gedaan.")
+            #vullen output array
             if count >0:
                 for i in range(0, count):
                     returnArray[i] = 'Zwart'
@@ -94,19 +82,3 @@ class GamePlay:
                     returnArray[i] = 'Wit'
         return returnArray, self.ctr
 
-if __name__ == "__main__":
-    #for i in range(500):
-    #    game = GamePlay(6, 6, 'Easy')
-    #    if game.num < 1000:
-    #        print(game.num)
-    #        break
-    #print('de main werkt')
-    g = GamePlay(6, 4, "Hard")
-    #d = Database()
-    #d.addGame("Leon", 22)
-    test = ['Empty', 'Empty', 'Empty', 'Empty']
-    while (test!=['Zwart', 'Zwart', 'Zwart', 'Zwart']):
-        test, aantalPogingen = g.setGuessedColours(str(input("Guess the colour combination:")))
-        print(test)
-      #  print(aantalPogingen)
-      #  print(d.getNames())
