@@ -1,11 +1,10 @@
+from database import Database
 from flask import Flask
 from flask import render_template
 from flask import request
 from backend import GamePlay
 from Manager import Static
 from guess import Guess
-
-Static.Game = GamePlay(6, 4, 'Easy')
 
 app = Flask(__name__)
 @app.route('/', methods=['POST', 'GET'])
@@ -19,19 +18,19 @@ def index():
             return render_template('login.html')
         #Show statistics
         elif request.form['Msg'] == 'stats':
-            Static.Players = Static.Game.db.getNames()
+            Static.Players = Static.Db.getNames()
             # If there's game data, display it
             if len(Static.Players) > 0:
                 # Show game data of first player by default
-                data = Static.Game.db.getPlayerData(Static.Players[0])
+                data = Static.Db.getPlayerData(Static.Players[0])
                 return render_template('Statistics.html', name=Static.Players[0], players=Static.Players, data=data)
             # else display that there is no data
             else:
                 return render_template('Statistics.html', data='no')
         # Select a specific player's data to be displayed
         elif request.form['Msg'] == 'statsFilter':
-            Static.Players = Static.Game.db.getNames()
-            data = Static.Game.db.getPlayerData(request.form['name'])
+            Static.Players = Static.Db.getNames()
+            data = Static.Db.getPlayerData(request.form['name'])
             return render_template('Statistics.html', name=request.form['name'],  players=Static.Players, data=data)
         elif request.form['Msg'] == 'StartGame':
             #Start new game after fetching game settings
@@ -94,7 +93,7 @@ def index():
             if len(name) == 0:
                 return render_template('index.html')
             else:
-                Static.Game.db.addGame(name, Static.Game.ctr, result, Static.Game.gameMode)
+                Static.Db.addGame(name, Static.Game.ctr, result, Static.Game.gameMode)
                 return render_template('index.html')
         elif request.form['Msg'] == 'return':
             #Return back to the homepage
@@ -103,5 +102,6 @@ def index():
     return render_template('index.html')
 
 if __name__ == '__main__':
+    Static.Db = Database()
     app.run(debug=True)
 

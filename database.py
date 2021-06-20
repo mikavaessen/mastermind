@@ -20,7 +20,7 @@ class Database():
     def getPlayerData(self, name:str):
         # Get data of all games for a specific player
         cursor = self.conn.cursor()
-        cursor.execute(f"SELECT * FROM data WHERE Name = '{name}'")
+        cursor.execute(f"SELECT * FROM data WHERE Name = '{name}' ORDER BY Game DESC")
         retVal = []
         for row in cursor:
             retVal.append(row)
