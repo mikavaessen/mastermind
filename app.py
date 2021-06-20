@@ -10,20 +10,25 @@ Static.Game = GamePlay(6, 4, 'Easy')
 app = Flask(__name__)
 @app.route('/', methods=['POST', 'GET'])
 def index():
+    # List of feedback colours for a correct guess
     correct = ['Zwart', 'Zwart', 'Zwart', 'Zwart']
+    # Check for method type POST
     if request.method == 'POST':
-        print(request.form['Msg'])
         #Go to game settings
         if request.form['Msg'] == 'login':
             return render_template('login.html')
         #Show statistics
         elif request.form['Msg'] == 'stats':
             Static.Players = Static.Game.db.getNames()
+            # If there's game data, display it
             if len(Static.Players) > 0:
+                # Show game data of first player by default
                 data = Static.Game.db.getPlayerData(Static.Players[0])
                 return render_template('Statistics.html', name=Static.Players[0], players=Static.Players, data=data)
+            # else display that there is no data
             else:
                 return render_template('Statistics.html', data='no')
+        # Select a specific player's data to be displayed
         elif request.form['Msg'] == 'statsFilter':
             Static.Players = Static.Game.db.getNames()
             data = Static.Game.db.getPlayerData(request.form['name'])
@@ -62,6 +67,8 @@ def index():
             feedback, temp = Static.Game.setGuessedColours(guessNum)
             print(guessNum, feedback)
             Static.Guesses.append(Guess(guess, feedback))
+            # If the last guess has been made or guess is correct go to results page
+            # else reload game page with feedback for new row
             if Static.Game.ctr >= Static.Game.positionAmount:
                 if feedback == correct:
                     return render_template('Result.html', result='TRUE')
@@ -80,6 +87,7 @@ def index():
                         inserts.append(['Empty', 'Empty', 'Empty', 'Empty'])
                         feedbacks.append(['Empty', 'Empty', 'Empty', 'Empty'])
                     return render_template('Game.html', colours=Static.Colours, inserts=inserts, feedback=feedbacks, tries=Static.Game.positionAmount)                        
+        # Enter results in db and go back to home page after result screen
         elif request.form['Msg'] == 'returnEndGame':
             name = request.form['nickName']
             result = request.form['result']
@@ -91,6 +99,7 @@ def index():
         elif request.form['Msg'] == 'return':
             #Return back to the homepage
             return render_template('index.html')
+    # Go to homepage by default
     return render_template('index.html')
 
 if __name__ == '__main__':
